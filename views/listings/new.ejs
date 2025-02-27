@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create your Listing</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Listing</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .container {
+                margin-top: 20px;
+                background: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                width: 400px;
+            }
+
+            h2 {
+                text-align: center;
+                color: #9a1f1f;
+            }
+
+            label {
+                font-weight: bold;
+                display: block;
+                margin: 10px 0 5px;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            textarea {
+                height: 80px;
+                resize: none;
+            }
+
+            button {
+                width: 100%;
+                padding: 10px;
+                background: #28a745;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+            button:hover {
+                background: #218838;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>Create Your Own Listing</h2>
+        <br>
+        <div class="container">
+
+            <h2>Create Your Own Listing</h2>
+            <form action="/listings" method="POST">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="listing[title]" placeholder="Enter title" >
+
+                <label for="desc">Description</label>
+                <textarea name="listing[description]" id="desc" placeholder="Enter the description of your listing"
+                    ></textarea>
+                <label for="fln">Image Name</label>
+                <input type="text" id="fln" name="listing[image][filename]" placeholder="Enter image name">
+
+                <label for="url">Image URL</label>
+                <input type="text" name="listing[image][url]" placeholder="Enter image URL" id="url">
+
+
+                <label for="priceL">Price</label>
+                <input type="number" name="listing[price]" id="priceL" placeholder="Enter listing price" >
+
+                <label for="lcn">Location</label>
+                <input type="text" name="listing[location]" placeholder="Enter location" id="lcn" >
+
+                <label for="cnty">Country</label>
+                <input type="text" id="cnty" name="listing[country]" placeholder="Enter country" >
+
+                <button type="submit">Create Listing</button>
+            </form>
+        </div>
+
+    </body>
+
+    </html>
+
+</body>
+
+</html>

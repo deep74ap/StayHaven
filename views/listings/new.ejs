@@ -1,39 +1,64 @@
-
 <% layout("/layouts/boilerplate") %>
 
-    <body>
-        <h2>Create Your Own Listing</h2>
-        <br>
-        <div class="container">
 
-            <h2>Create Your Own Listing</h2>
+     
+        <div class = "row">
+            <div class ="col-8 offset-2">
+                <h2>Create Your Own Listing</h2>
             <form action="/listings" method="POST">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="listing[title]" placeholder="Enter title" >
+                
+               
+                    
+                <div class="mb-3">
 
-                <label for="desc">Description</label>
-                <textarea name="listing[description]" id="desc" placeholder="Enter the description of your listing"
-                    ></textarea>
-                <label for="fln">Image Name</label>
-                <input type="text" id="fln" name="listing[image][filename]" placeholder="Enter image name">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" id="title" name="listing[title]" class="form-control" placeholder="Enter title">
 
-                <label for="url">Image URL</label>
-                <input type="text" name="listing[image][url]" placeholder="Enter image URL" id="url">
+                </div>
+
+                <div class="mb-3">
+                    <label for="desc" class="form-label">Description</label>
+                    <textarea name="listing[description]" id="desc"
+                        placeholder="Enter the description of your listing" class="form-control"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="fln" class="form-label">Image Name</label>
+                    <input type="text" id="fln" name="listing[image][filename]" class="form-control" placeholder="Enter image name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="url" class="form-label">Image URL</label>
+                    <input type="text" name="listing[image][url]" class="form-control" placeholder="Enter image URL" id="url">
+                </div>
 
 
-                <label for="priceL">Price</label>
-                <input type="number" name="listing[price]" id="priceL" placeholder="Enter listing price" >
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                    <label for="priceL" class="form-label">Price</label>
+                    <input type="number" name="listing[price]" class="form-control" id="priceL" placeholder="Enter listing price">
+                </div>
+                <div class="mb-3 col-md-8">
+                    <label for="cnty" class="form-label">Country</label>
+                    <input type="text" id="cnty" name="listing[country]" class="form-control" placeholder="Enter country">
+                </div>
+                </div>
 
-                <label for="lcn">Location</label>
-                <input type="text" name="listing[location]" placeholder="Enter location" id="lcn" >
+                
 
-                <label for="cnty">Country</label>
-                <input type="text" id="cnty" name="listing[country]" placeholder="Enter country" >
+                <div class="mb-3">
+                    <label for="lcn" class="form-label">Location</label>
+                    <input type="text" name="listing[location]" class="form-control" placeholder="Enter location" id="lcn">
+                </div>
 
-                <button type="submit">Create Listing</button>
+                
+
+                <br><br>
+
+                <button type="submit" class="btn btn-dark add-btn">Add Listing</button>
+                <br><br>
             </form>
-        </div>
-
-    </body>
-
- 
+        </div></div>
+      
+            
+        

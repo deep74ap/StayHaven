@@ -1,6 +1,35 @@
  <% layout("/layouts/boilerplate") %>
 
 
+ <div class="container">
+    <div class="card">
+        <img src="<%= listing.image.url %>" alt="Listing Image" class="listing-img">
+        
+        <div class="content">
+            <h2 class="title"> <%=listing.title %></h2>
+            <p class="location"> <%=listing.location %> , <%=listing.country %> </p>
+            <p class="price">&#8377;<%=listing.price.toLocaleString("en-IN") %></p>
+            <p class="description">
+                <%=listing.description %>
+            </p>
+
+           
+            <div class="btn-container">
+                
+                 <a href="/listings/<%= listing._id %>/edit"><button class="btn book-btn">Book Now</button></a>
+                <form method = "post" action="/listings/<%= listing._id %>?_method=DELETE">
+                    <button class="btn delete-btn">Delete Listing</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 
+
+
 <body>
     <h2>Listing details of <%=listing._id %>
     </h2>
@@ -35,5 +64,5 @@
     <form method = "post" action="/listings/<%= listing._id %>?_method=DELETE">
         <button >Delete your Listing</button>
     </form>
-</body>
-
+</body> 
+ -->

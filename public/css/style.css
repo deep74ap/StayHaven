@@ -2,6 +2,13 @@ body{
     
     font-family: "Plus Jakarta Sans", sans-serif !important;
   font-optical-sizing: auto !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+.container{
+    flex:1;
 }
 
 .navbar {
@@ -152,6 +159,25 @@ footer {
     opacity: 0.3;
 }
 
+
+.add-btn{
+    background-color: #fe424d !important ;
+    border: none !important;
+    opacity: 1;
+    transition: 0.2s !important;
+   
+}
+.add-btn:hover{
+    opacity: 0.8;
+}
+
+
+
+
+
+
+
+
 /* Responsive: Reduce overlay text size on smaller screens */
 @media (max-width: 768px) {
     .card-img-overlay {
@@ -175,3 +201,4 @@ footer {
         transform: scale(1);
     }
 }
+

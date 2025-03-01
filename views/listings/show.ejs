@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+ <% layout("/layouts/boilerplate") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show listings</title>
-</head>
 
 <body>
     <h2>Listing details of <%=listing._id %>
@@ -14,13 +8,20 @@
         <li>
             title : <%=listing.title %>
         </li>
+        <br><br>
         <li>
             Description : <%=listing.description %>
-        </li><li>
+        </li>
+        <br><br>
+        <li>
             Price : &#8377;<%=listing.price.toLocaleString("en-IN") %>
-        </li><li>
+        </li>
+        <br><br>
+        <li>
             Location : <%=listing.location %>
         </li>
+        <br><br>
+        
         <li>
             Country : <%=listing.country %>
         </li>
@@ -36,4 +37,3 @@
     </form>
 </body>
 
-</html>

@@ -5,42 +5,54 @@
         <div class = "row">
             <div class ="col-8 offset-2">
                 <h2>Create Your Own Listing</h2>
-            <form action="/listings" method="POST">
+            <form action="/listings" method="POST" novalidate class="needs-validation">
                 
                
                     
                 <div class="mb-3">
 
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" id="title" name="listing[title]" class="form-control" placeholder="Enter title">
-
+                    <input type="text" id="title" name="listing[title]" required class="form-control" placeholder="Enter title">
+                    
+                    <div class="invalid-feedback">Title cann't be empty.</div>
+                    <div class="valid-feedback">Title looks good.</div>
                 </div>
 
                 <div class="mb-3">
                     <label for="desc" class="form-label">Description</label>
                     <textarea name="listing[description]" id="desc"
-                        placeholder="Enter the description of your listing" class="form-control"></textarea>
-                </div>
+                        placeholder="Enter the description of your listing" required class="form-control"></textarea>
+                
+                        <div class="invalid-feedback">Please enter short descreption.</div>
+                    </div>
 
                 <div class="mb-3">
                     <label for="fln" class="form-label">Image Name</label>
-                    <input type="text" id="fln" name="listing[image][filename]" class="form-control" placeholder="Enter image name">
+                    <input type="text" id="fln" name="listing[image][filename]"  class="form-control" placeholder="Enter image name">
+                
+                    <div class="invalid-feedback">Please enter valid image name.</div>
                 </div>
 
                 <div class="mb-3">
                     <label for="url" class="form-label">Image URL</label>
                     <input type="text" name="listing[image][url]" class="form-control" placeholder="Enter image URL" id="url">
+               
+                    <div class="invalid-feedback">Please enter url.</div>
                 </div>
 
 
                 <div class="row">
                     <div class="mb-3 col-md-4">
                     <label for="priceL" class="form-label">Price</label>
-                    <input type="number" name="listing[price]" class="form-control" id="priceL" placeholder="Enter listing price">
+                    <input type="number" name="listing[price]" class="form-control" required id="priceL" placeholder="Enter listing price">
+                
+                    <div class="invalid-feedback">Price couldn't be empty.</div>
                 </div>
                 <div class="mb-3 col-md-8">
                     <label for="cnty" class="form-label">Country</label>
-                    <input type="text" id="cnty" name="listing[country]" class="form-control" placeholder="Enter country">
+                    <input type="text" id="cnty" name="listing[country]"  required class="form-control" placeholder="Enter country">
+                
+                    <div class="invalid-feedback">Please enter country name.</div>
                 </div>
                 </div>
 
@@ -48,7 +60,8 @@
 
                 <div class="mb-3">
                     <label for="lcn" class="form-label">Location</label>
-                    <input type="text" name="listing[location]" class="form-control" placeholder="Enter location" id="lcn">
+                    <input type="text" name="listing[location]" class="form-control" required placeholder="Enter location" id="lcn">
+                    <div class="invalid-feedback">Location is not valid.</div>
                 </div>
 
                 

@@ -14,6 +14,8 @@ const ExpressError = require("./utils/ExpressError.js");
 // const review = require("./models/review.js"); 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js")
+const session = require("express-session");
+const flash = require("connect-flash");
 
 
 // const Listing = require("./models/listing.js"); 
@@ -37,15 +39,37 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/ProjectDbs');
 }
 
+const sessionOptions = {
+    secret : "mysupersecretcode",
+    resave : false,
+    saveUninitialized: true,
+    cookie:{
+        expires: Date.now() + 7*24*60*60*1000,
+        maxAge : 7*24*60*60*1000,
+        httpOnly:true,
+    },
+};
+
+app.get("/",(req,res) =>{
+    res.send("Hii I am response");
+});
+
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use((req,res,next) =>{
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
+})
 
 app.use("/listings",listings);
 app.use("/listings/:id/reviews",reviews);
 
 
 
-app.get("/",(req,res) =>{
-    res.send("Hii I am response");
-});
+
 
 // app.get("/testing",async (req,res)=>{
 //     let newlisting = new Listing({

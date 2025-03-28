@@ -259,3 +259,63 @@ footer {
     color: #2c3e50; /* Dark blue-gray color */
     margin-bottom: 5px;
 }
+.signup-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #6a11cb, #2575fc, #6a11cb, #2575fc);
+    background-size: 400% 400%;
+    animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Form Container */
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.form-floating>.form-control:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+}
+
+.btn-primary {
+    background: #6a11cb;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #2575fc;
+    transform: scale(1.02);
+}
+
+h3 {
+    font-weight: 600;
+    color: #333;
+}

@@ -9,6 +9,7 @@ const Joi = require('joi');
 const {listingSchema } = require("../Scema.js"); 
 // const reviewSchema = require("./Scema.js");
 const review = require("../models/review.js"); 
+const {isLoggedIn} = require("../middleware.js");
 
 const Listing = require("../models/listing.js"); 
 console.log("Listing Schema Import Check:", Listing);
@@ -38,14 +39,15 @@ router.get("/",wrapAsync(async (req,res,next) => {
 }));
 
 // New route for new listing
-router.get("/new",(req,res)=>{
+router.get("/new",isLoggedIn,(req,res)=>{
+    
     res.render("listings/new.ejs")
 })
 
 //Create Route
 
-router.post("/",validateListing,wrapAsync(async (req,res,next)=>{
-    
+router.post("/",isLoggedIn,validateListing,wrapAsync(async (req,res,next)=>{
+
     const  newListing =new Listing(req.body.listing);
     console.log(req.body.listing);
     await newListing.save();
@@ -69,7 +71,7 @@ router.get("/:id",wrapAsync(async (req,res,next)=>{
 }));
 
 //Get request for an edit in listing
-router.get("/:id/edit",wrapAsync(async (req,res,next) => {
+router.get("/:id/edit",isLoggedIn,wrapAsync(async (req,res,next) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
     if(!listing){
@@ -81,7 +83,7 @@ router.get("/:id/edit",wrapAsync(async (req,res,next) => {
 
 
 //Update request 
-router.put("/:id",validateListing,wrapAsync(async (req,res,next)=>{
+router.put("/:id",isLoggedIn,validateListing,wrapAsync(async (req,res,next)=>{
     let { id } = req.params;
 
     await Listing.findByIdAndUpdate(id,{...req.body.listing});
@@ -91,7 +93,7 @@ router.put("/:id",validateListing,wrapAsync(async (req,res,next)=>{
 }));
 
 //Delete route
-router.delete("/:id",wrapAsync(async (req,res,next)=>{
+router.delete("/:id",isLoggedIn,wrapAsync(async (req,res,next)=>{
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     req.flash("success","Your listing has been deleted !");

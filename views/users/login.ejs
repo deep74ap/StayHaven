@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate") %>
+<div class="signup-page">
+    <div class="form-container">
+        <h3 class="mb-4 text-center">Login</h3>
+        <form method="post" action="/login" class="needs-validation" novalidate>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+                <label for="username">Username</label>
+                <div class="invalid-feedback">
+                    Please enter a username.
+                </div>
+            </div>
+
+            
+            <div class="form-floating mb-4">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required minlength="6">
+                <label for="password">Password</label>
+                <div class="invalid-feedback">
+                    Please enter a password (min 6 characters).
+                </div>
+            </div>
+
+            <button class="btn btn-primary w-100" type="submit">Login</button>
+        </form>
+    </div>
+</div>

@@ -5,59 +5,32 @@ const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync");
 const passport = require("passport");
 const {saveRedirectUrl} = require("../middleware.js");
+const userController = require("../Controller/userController.js");
+const { route } = require("./review.js");
 
-router.get("/signup",(req,res)=>{
-    res.render("users/signup.ejs");
-});
-
-router.post("/signup",wrapAsync(async(req,res)=>{
-    try{
-        let{username,email,password} = req.body;
-        const newUser = new User({email,username});
-        const registeredUser = await User.register(newUser,password);
-        console.log(registeredUser);
-        req.login(registeredUser,(err)=>{
-            if(err){
-                next(err);
-            }
-            req.flash("success","User registered Sucessfully");
-            res.redirect("/listings");
-        });
-    
-    } catch(e){
-        req.flash("error",e.message);
-        res.redirect("/signup");
-    }
-
-}));
-
-router.get("/login",(req,res)=>{
-    res.render("users/login.ejs");
-});
-
-router.post("/login",saveRedirectUrl,passport.authenticate('local' , {failureRedirect : "/login",failureFlash:true}),async(req,res) =>{
-    req.flash("success" , "Welcome! You are logged in.");
-    if(res.locals.redirectUrl){
-        res.redirect(res.locals.redirectUrl);
-    }
-    else{
-        res.redirect("/listings");
-    }
-    
-
-})
+//Router.route for /signup
+router.route("/signup")
+.get(userController.signUp)
+.post(wrapAsync(userController.signUp));
 
 
-router.get("/logout",(req,res,next)=>{
-    req.logout((err) =>{
-      if(err){
-        return next(err);
-      }
-      req.flash("Success","You are logged out");
-      res.redirect("/listings");
-    
-    
-    });
-});
+
+// router.get("/signup",userController.signUp);
+//Signup route
+// router.post("/signup",wrapAsync(userController.signUp));
+
+//Router.route for /login
+
+router.route("/login")
+.get(userController.loginPage)
+.post(saveRedirectUrl,passport.authenticate('local' , {failureRedirect : "/login",failureFlash:true}),userController.loginPost)
+
+//Login page route 
+// router.get("/login",userController.loginPage);
+//Login post route
+// router.post("/login",saveRedirectUrl,passport.authenticate('local' , {failureRedirect : "/login",failureFlash:true}),userController.loginPost)
+
+//Logout 
+router.get("/logout",userController.logout);
 
 module.exports = router;

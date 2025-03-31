@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const review = require("./review");
 const Schema = mongoose.Schema;
-const Review  = require("./review.js")
+const Review  = require("./review.js");
+const User = require("./user.js")
 
 const listingSchema = new Schema({
     title:{
@@ -26,7 +27,12 @@ const listingSchema = new Schema({
     price: Number,
     location: String,
     country: String,
-    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }]
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
+    owner : {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "User",
+
+    }
 });
 
 

@@ -386,3 +386,16 @@ h3 {
     font-weight: 600;
     color: #333;
 }
+
+.owner-details {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+.owner-details:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+.owner-info {
+    font-size: 1.1rem;
+    color: #333;
+}

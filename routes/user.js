@@ -10,7 +10,7 @@ const { route } = require("./review.js");
 
 //Router.route for /signup
 router.route("/signup")
-.get(userController.signUp)
+.get(userController.signUpPage)
 .post(wrapAsync(userController.signUp));
 
 
@@ -23,7 +23,9 @@ router.route("/signup")
 
 router.route("/login")
 .get(userController.loginPage)
-.post(saveRedirectUrl,passport.authenticate('local' , {failureRedirect : "/login",failureFlash:true}),userController.loginPost)
+.post(saveRedirectUrl,
+    passport.authenticate('local' , {failureRedirect : "/login",failureFlash:true}),
+    userController.loginPost);
 
 //Login page route 
 // router.get("/login",userController.loginPage);

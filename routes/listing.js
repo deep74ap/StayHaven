@@ -13,7 +13,9 @@ const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 const ListingController = require("../Controller/listingController.js");
 const Listing = require("../models/listing.js");
 console.log("Listing Schema Import Check:", Listing);
-
+const multer = require("multer");
+const storage = require("../cloudconfig.js");
+const upload = multer({storage})
 
 const { log } = require("console");
 
@@ -22,7 +24,21 @@ const { log } = require("console");
 
 router.route("/")
 .get(wrapAsync(ListingController.indexListing))
-.post(isLoggedIn, validateListing, wrapAsync(ListingController.createListing));
+// .post(isLoggedIn, validateListing, wrapAsync(ListingController.createListing));
+.post(upload.single('listing[image][url]'), (req, res) => {
+    console.log('Uploaded file:',req.file);
+    if (req.file) {
+        console.log(req.file);
+        res.send(req.file);  // Send the file info (Cloudinary URL and metadata)
+    } else {
+      res.status(400).send('No file uploaded.');
+    }
+  });
+
+
+
+
+
 // router.get("/", wrapAsync(ListingController.indexListing));
 
 // New route for new listing

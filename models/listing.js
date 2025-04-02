@@ -11,18 +11,8 @@ const listingSchema = new Schema({
     } ,
     description: String,
     image: {
-        filename: {
-            type: String,
-            required: true,
-          },
-          url: {
-            type: String,
-            default:"https://media.istockphoto.com/id/488120139/photo/modern-real-estate.jpg?s=612x612&w=0&k=20&c=88jk1VLSoYboMmLUx173sHs_XrZ9pH21as8lC7WINQs=",
-        set:(v) => v===""?"https://media.istockphoto.com/id/488120139/photo/modern-real-estate.jpg?s=612x612&w=0&k=20&c=88jk1VLSoYboMmLUx173sHs_XrZ9pH21as8lC7WINQs=":v,
-            required: true,
-          
-          }
-        
+        filename : String,
+        url : String,
         },
     price: Number,
     location: String,

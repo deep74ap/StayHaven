@@ -24,16 +24,19 @@ const { log } = require("console");
 
 router.route("/")
 .get(wrapAsync(ListingController.indexListing))
-// .post(isLoggedIn, validateListing, wrapAsync(ListingController.createListing));
-.post(upload.single('listing[image][url]'), (req, res) => {
-    console.log('Uploaded file:',req.file);
-    if (req.file) {
-        console.log(req.file);
-        res.send(req.file);  // Send the file info (Cloudinary URL and metadata)
-    } else {
-      res.status(400).send('No file uploaded.');
-    }
-  });
+.post(isLoggedIn,
+  upload.single('listing[image]'),
+   validateListing,
+    wrapAsync(ListingController.createListing));
+// .post(upload.single('listing[image][url]'), (req, res) => {
+//     console.log('Uploaded file:',req.file);
+//     if (req.file) {
+//         console.log(req.file);
+//         res.send(req.file);  // Send the file info (Cloudinary URL and metadata)
+//     } else {
+//       res.status(400).send('No file uploaded.');
+//     }
+//   });
 
 
 
@@ -52,7 +55,7 @@ router.get("/new", isLoggedIn, ListingController.newRoute)
 //show,update,delete route compacting using router.route
 router.route("/:id")
 .get( wrapAsync(ListingController.showListing))
-.put( isLoggedIn, isOwner, validateListing, wrapAsync(ListingController.updateListing))
+.put( isLoggedIn, isOwner,upload.single('listing[image]'), validateListing, wrapAsync(ListingController.updateListing))
 .delete(isLoggedIn, isOwner, wrapAsync(ListingController.destroyListing));
 
 

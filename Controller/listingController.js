@@ -16,8 +16,14 @@ module.exports.newRoute = (req, res) => {
 module.exports.createListing = async (req, res, next) => {
 
     const newListing = new Listing(req.body.listing);
+    console.log(req.file);
     newListing.owner = req.user._id;
-    console.log(req.body.listing);
+    url = req.file.path;
+    filename =  req.file.filename;
+
+    newListing.image = { filename ,url};
+
+  
     await newListing.save();
     req.flash("success", "New listing Created !");
     res.redirect("/listings");
@@ -57,8 +63,15 @@ module.exports.getEditform = async (req, res, next) => {
 module.exports.updateListing = async (req, res, next) => {
     let { id } = req.params;
 
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    if(typeof req.file !== "undefined"){
+        url = req.file.path;
+    filename =  req.file.filename;
 
+    listing.image = { filename ,url};
+    await listing.save();
+    }
+ 
     req.flash("success", "Your listing has been Updated !");
     res.redirect(`/listings/${id}`)
 };

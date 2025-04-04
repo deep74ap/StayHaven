@@ -1,17 +1,18 @@
 <nav class="navbar navbar-expand-md bg-light border-bottom sticky-top shadow-sm">
   <div class="container-fluid">
-      <a class="navbar-brand fw-bold text-primary" href="/">StayHaven</a>
+      <a class="navbar-brand fw-bold text-primary" href="/listings">StayHaven</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-              <a class="nav-link" href="/">Home</a>
-              <a class="nav-link" href="/listings">All Listings</a>
-              <a class="nav-link" href="/listings/new">New Listing</a>
+              
+              <a class="nav-link" href="/listings">Explore</a>
+              
           </div>
           <div class="ms-auto navbar-nav">
+            <a class="nav-link" href="/listings/new">New Listing</a>
               <% if (!currUser) { %>
                   <a class="nav-link btn btn-outline-primary me-2 px-3" href="/signup">Signup</a>
                   <a class="nav-link btn btn-primary px-3 text-white" href="/login">Login</a>

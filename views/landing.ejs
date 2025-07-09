@@ -1,0 +1,209 @@
+<% layout("/layouts/boilerplate") %>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Find Your Perfect Stay</h1>
+        <p class="hero-subtitle">Discover unique stays from beaches to mountains, from nature to luxury.</p>
+        
+        <!-- Search Form -->
+        <div class="search-container">
+            <form class="search-form">
+                <div class="search-input-group">
+                    <div class="search-input">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" placeholder="Where are you going?" required>
+                    </div>
+                    <div class="search-input">
+                        <i class="far fa-calendar-alt"></i>
+                        <input type="text" placeholder="Check in - Check out" required>
+                    </div>
+                    <div class="search-input">
+                        <i class="fas fa-user-friends"></i>
+                        <input type="number" placeholder="Guests" min="1" required>
+                    </div>
+                    <button type="submit" class="search-btn">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Category Navigation -->
+<section class="category-section">
+    <div class="container">
+        <div id="filters" class="category-filters">
+            <div class="filter">
+                <div><i class="fa-solid fa-fire"></i></div>
+                <p>Trending</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-solid fa-bed"></i></div>
+                <p>Rooms</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-solid fa-mountain-city"></i></div>
+                <p>Iconic Cities</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-brands fa-fort-awesome"></i></div>
+                <p>Castles</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-solid fa-mountain-sun"></i></div>
+                <p>Mountain Views</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-solid fa-tent"></i></div>
+                <p>Camping</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-solid fa-person-swimming"></i></div>
+                <p>Amazing Nature</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-solid fa-tractor"></i></div>
+                <p>Farms</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-solid fa-snowflake"></i></div>
+                <p>Arctic</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-solid fa-ship"></i></div>
+                <p>Boats</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Listings Section -->
+<section class="featured-section">
+    <div class="container">
+        <h2 class="section-title">Featured Stays</h2>
+        <p class="section-subtitle">Handpicked accommodations for your next adventure</p>
+        
+        <div class="tax-switch-container">
+            <div class="tax-switch">
+                <div class="form-check-reverse form-switch">
+                    <input 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        role="switch" 
+                        id="flexSwitchCheckDefault">
+                    <label 
+                        class="form-check-label" 
+                        for="flexSwitchCheckDefault">Display Taxes
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="featured-listings">
+            <!-- Featured Listing 1 -->
+            <div class="featured-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2" class="card-img-top" alt="Beachfront Cottage">
+                    <div class="card-body">
+                        <h5 class="card-title">Cozy Beachfront Cottage</h5>
+                        <p class="card-text">₹12,000 /Night <i class="tax-info">&nbsp;+18% GST</i></p>
+                        <div class="card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Listing 2 -->
+            <div class="featured-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688" class="card-img-top" alt="Modern Loft">
+                    <div class="card-body">
+                        <h5 class="card-title">Modern Loft in Downtown</h5>
+                        <p class="card-text">₹9,500 /Night <i class="tax-info">&nbsp;+18% GST</i></p>
+                        <div class="card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Listing 3 -->
+            <div class="featured-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4" class="card-img-top" alt="Mountain Retreat">
+                    <div class="card-body">
+                        <h5 class="card-title">Mountain Retreat</h5>
+                        <p class="card-text">₹15,000 /Night <i class="tax-info">&nbsp;+18% GST</i></p>
+                        <div class="card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Listing 4 -->
+            <div class="featured-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" class="card-img-top" alt="Historic Villa">
+                    <div class="card-body">
+                        <h5 class="card-title">Historic Villa in Tuscany</h5>
+                        <p class="card-text">₹20,000 /Night <i class="tax-info">&nbsp;+18% GST</i></p>
+                        <div class="card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="view-all-container">
+            <a href="/listings" class="btn btn-primary view-all-btn">View All Listings</a>
+        </div>
+    </div>
+</section>
+
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+
+    for (info of taxInfo) {
+      if(info.style.display != "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }     
+    }
+  });
+</script>

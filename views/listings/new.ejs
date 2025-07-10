@@ -1,78 +1,49 @@
 <% layout("/layouts/boilerplate") %>
-
-
-     
-        <div class = "row">
-            <div class ="col-8 offset-2">
-                <h2>Create Your Own Listing</h2>
-                <form action="/listings" method="POST" class="needs-validation" novalidate enctype="multipart/form-data"">
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input type="text" id="title" name="listing[title]" class="form-control" required>
-                        <div class="invalid-feedback">Title cannot be empty.</div>
-                        <div class="valid-feedback">Looks good!</div>
-                    </div>
-                    
-                
-                    <div class="mb-3">
-                        <label for="desc" class="form-label">Description</label>
-                        <textarea name="listing[description]" id="desc" required class="form-control" placeholder="Enter description"></textarea>
-                        <div class="invalid-feedback">Please enter a short description.</div>
-                    </div>
-                
-
-                <!-- <div class="mb-3">
-                    <label for="fln" class="form-label">Image Name</label>
-                    <input type="text" id="fln" name="listing[image][filename]"  class="form-control" placeholder="Enter image name">
-                
-                    <div class="invalid-feedback">Please enter valid image name.</div>
-                </div> -->
-
-                <!-- <div class="mb-3">
-                    <label for="url" class="form-label">Image URL</label>
-                    <input type="text" name="listing[image][url]" class="form-control" placeholder="Enter image URL" id="url">
-               
-                    <div class="invalid-feedback">Please enter url.</div>
-                </div> -->
-                <div class="mb-3">
-                    <label for="url" class="form-label">Upload image </label>
-                    <input type="file" name="listing[image]" class="form-control" id="url" required>
-               
-                    <div class="invalid-feedback">Please upload image.</div>
-                </div>
-
-
-                <div class="row">
-                    <div class="mb-3 col-md-4">
-                    <label for="priceL" class="form-label">Price</label>
-                    <input type="number" name="listing[price]" class="form-control" required id="priceL" placeholder="Enter listing price">
-                
-                    <div class="invalid-feedback">Price couldn't be empty.</div>
-                </div>
-                <div class="mb-3 col-md-8">
-                    <label for="cnty" class="form-label">Country</label>
-                    <input type="text" id="cnty" name="listing[country]"  required class="form-control" placeholder="Enter country">
-                
-                    <div class="invalid-feedback">Please enter country name.</div>
-                </div>
-                </div>
-
-                
-
-                <div class="mb-3">
-                    <label for="lcn" class="form-label">Location</label>
-                    <input type="text" name="listing[location]" class="form-control" required placeholder="Enter location" id="lcn">
-                    <div class="invalid-feedback">Location is not valid.</div>
-                </div>
-
-                
-
-                <br><br>
-
-                <button type="submit" class="btn btn-dark add-btn">Add Listing</button>
-                <br><br>
-            </form>
-        </div></div>
+<link rel="stylesheet" href="/css/listing-form.css">
+<div class="listing-form-bg">
+  <div class="listing-form-card">
+    <h2>Create Your Own Listing</h2>
+    <form action="/listings" method="POST" enctype="multipart/form-data" novalidate class="needs-validation">
+      <div class="listing-form-section">
+        <div class="listing-form-floating">
+          <input type="text" id="title" name="listing[title]" placeholder=" " required>
+          <label for="title">Title</label>
+          <div class="invalid-feedback">Please enter a title to continue.</div>
+        </div>
+        <div class="listing-form-floating">
+          <textarea id="desc" name="listing[description]" placeholder=" " required rows="3"></textarea>
+          <label for="desc">Description</label>
+          <div class="invalid-feedback">Please enter a description to continue.</div>
+        </div>
+        <div class="listing-form-floating">
+          <input type="file" id="url" name="listing[image]" placeholder=" " required>
+          <label for="url">Upload image</label>
+          <div class="invalid-feedback">Please upload an image to continue.</div>
+        </div>
+      </div>
+      <div class="listing-form-section" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <div class="listing-form-floating" style="flex:1; min-width:120px;">
+          <input type="number" id="priceL" name="listing[price]" placeholder=" " required>
+          <label for="priceL">Price</label>
+          <div class="invalid-feedback">Please enter a price to continue.</div>
+        </div>
+        <div class="listing-form-floating" style="flex:2; min-width:120px;">
+          <input type="text" id="cnty" name="listing[country]" placeholder=" " required>
+          <label for="cnty">Country</label>
+          <div class="invalid-feedback">Please enter a country to continue.</div>
+        </div>
+      </div>
+      <div class="listing-form-section">
+        <div class="listing-form-floating">
+          <input type="text" id="lcn" name="listing[location]" placeholder=" " required>
+          <label for="lcn">Location</label>
+          <div class="invalid-feedback">Please enter a location to continue.</div>
+        </div>
+      </div>
+      <button type="submit" class="listing-form-btn">Add Listing</button>
+    </form>
+  </div>
+</div>
       
             
         

@@ -1,0 +1,102 @@
+.listing-form-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.listing-form-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 6px 32px 0 rgba(60,72,88,0.12);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 540px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeInUp 0.7s cubic-bezier(.39,.575,.565,1) both;
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: none; }
+}
+.listing-form-card h2 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.listing-form-section {
+  margin-bottom: 1.5rem;
+}
+.listing-form-floating {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+.listing-form-floating input,
+.listing-form-floating textarea {
+  width: 100%;
+  border: 1.5px solid #e0e7ef;
+  border-radius: 0.75rem;
+  padding: 1.1rem 1rem 0.5rem 1rem;
+  background: #f8fafc;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.listing-form-floating input:focus,
+.listing-form-floating textarea:focus {
+  border-color: #4f8cff;
+  outline: none;
+  box-shadow: 0 0 0 2px #cfe2ff;
+}
+.listing-form-floating label {
+  position: absolute;
+  left: 1rem;
+  top: 1.1rem;
+  color: #7b8794;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.2s;
+  background: transparent;
+}
+.listing-form-floating input:not(:placeholder-shown) + label,
+.listing-form-floating input:focus + label,
+.listing-form-floating textarea:not(:placeholder-shown) + label,
+.listing-form-floating textarea:focus + label {
+  top: 0.3rem;
+  left: 0.9rem;
+  font-size: 0.85rem;
+  color: #4f8cff;
+  background: #fff;
+  padding: 0 0.25rem;
+}
+.listing-form-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #4f8cff 0%, #38b6ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.85rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px 0 rgba(60,72,88,0.10);
+  transition: background 0.2s, transform 0.15s;
+}
+.listing-form-btn:hover, .listing-form-btn:focus {
+  background: linear-gradient(90deg, #38b6ff 0%, #4f8cff 100%);
+  transform: translateY(-2px) scale(1.02);
+}
+.listing-form-feedback {
+  font-size: 0.97rem;
+  color: #e74c3c;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+@media (max-width: 600px) {
+  .listing-form-card {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    border-radius: 0.8rem;
+  }
+  .listing-form-bg {
+    padding: 0.5rem 0;
+  }
+}

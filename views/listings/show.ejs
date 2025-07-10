@@ -1,116 +1,207 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="container-fluid  py-5 listing-page px-0">
-    <div class="row justify-content-center">
-        <div class="col-lg-10 col-xl-8">
-            <h1 class="text-center fw-bold mb-4"><%= listing.title %></h1>
+<div class="modern-listing-container">
+    <!-- Hero Section with Image Gallery -->
+    <div class="modern-listing-hero">
+        <div class="modern-listing-image-container">
+            <img src="<%= listing.image.url %>" alt="<%= listing.title %>" class="modern-listing-main-image">
+        </div>
+    </div>
 
-            <img src="<%= listing.image.url %>" alt="Listing Image" class="img-fluid w-100 rounded mb-4">
-
-            <p class="text-muted text-center fs-5">
-                <i class="bi bi-geo-alt"></i> <%= listing.location %>, <%= listing.country %>
-            </p>
-
-            <h3 class="text-success text-center fw-bold mb-4">
-                &#8377;<%= listing.price.toLocaleString("en-IN") %>
-            </h3>
-
-            <p class="fs-4 text-secondary text-justify px-md-5">
-                <%= listing.description %>
-            </p>
-
-            <!-- Owner Details -->
-            <div class="owner-details bg-white p-3 rounded shadow mb-4 text-center">
-                <h5 class="fw-bold">Owner Details</h5>
-                <p class="owner-info"><strong>Owner:</strong> <%= listing.owner.username %></p>
-                <p class="owner-info"><strong>Email:</strong> <%= listing.owner.email %></p>
+    <!-- Main Content Area -->
+    <div class="modern-listing-content">
+        <!-- Left Column: Details -->
+        <div class="modern-listing-details">
+            <!-- Header Section -->
+            <div class="modern-listing-header">
+                <h1 class="modern-listing-title"><%= listing.title %></h1>
+                <div class="modern-listing-location">
+                    <i class="bi bi-geo-alt"></i> <%= listing.location %>, <%= listing.country %>
+                </div>
             </div>
 
+            <!-- Description Section -->
+            <div class="modern-listing-section">
+                <h2 class="modern-listing-section-title">About this place</h2>
+                <p class="modern-listing-description"><%= listing.description %></p>
+            </div>
+
+            <!-- Owner Card -->
+            <div class="modern-listing-section">
+                <h2 class="modern-listing-section-title">Hosted by <%= listing.owner.username %></h2>
+                <div class="modern-listing-owner-card">
+                    <div class="modern-listing-owner-avatar">
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                    <div class="modern-listing-owner-info">
+                        <p><strong>Email:</strong> <%= listing.owner.email %></p>
+                        <p><strong>Member since:</strong> <%= new Date().getFullYear() %></p>
+                        <p><strong>Response rate:</strong> 100%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Section (Placeholder) -->
+            <div class="modern-listing-section">
+                <h2 class="modern-listing-section-title">Location</h2>
+                <div class="modern-listing-map">
+                    <div class="modern-listing-map-placeholder">
+                        <i class="bi bi-map"></i>
+                        <p><%= listing.location %>, <%= listing.country %></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Owner Actions -->
             <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
-            <div class="d-flex justify-content-center gap-3 mt-4">
-                <a href="/listings/<%= listing._id %>/edit" class="btn btn-lg btn-outline-primary px-4">
+            <div class="modern-listing-owner-actions">
+                <a href="/listings/<%= listing._id %>/edit" class="modern-listing-edit-btn">
                     <i class="bi bi-pencil-square"></i> Edit Listing
                 </a>
                 
                 <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-                    <button type="submit" class="btn btn-lg btn-outline-danger px-4">
+                    <button type="submit" class="modern-listing-delete-btn">
                         <i class="bi bi-trash"></i> Delete Listing
                     </button>
                 </form>
             </div>
             <% } %>
-       <!-- review -->
-        <% if(currUser) {%>
-            <div class="mt-5 p-4 bg-white rounded shadow">
-                <h3 class="text-center fw-bold mb-3">Leave a Review</h3>
-                <form action="/listings/<%= listing._id %>/reviews" method="POST" class="needs-validation" novalidate>
-                    
-                    <!-- ratings -->
-                    <div class="mb-3 text-center">
-                        <label class="form-label fw-bold">Rating:</label>
-                        <div class="rating">
-                            <input type="radio" name="review[rating]" value="5" id="star5">
-                            <label for="star5">&#9733;</label>
-                            <input type="radio" name="review[rating]" value="4" id="star4">
-                            <label for="star4">&#9733;</label>
-                            <input type="radio" name="review[rating]" value="3" id="star3">
-                            <label for="star3">&#9733;</label>
-                            <input type="radio" name="review[rating]" value="2" id="star2">
-                            <label for="star2">&#9733;</label>
-                            <input type="radio" name="review[rating]" value="1" id="star1" required>
-                            <label for="star1">&#9733;</label>
-                        </div>
-                        <div class="invalid-feedback">Please select a rating.</div>
-                    </div>
 
-                  <!-- comments -->
-                    <div class="mb-3">
-                        <label for="reviewText" class="form-label fw-bold">Your Review:</label>
-                        <textarea name="review[comment]" id="reviewText" class="form-control" rows="4" required placeholder="Write your review here..."></textarea>
-                        <div class="invalid-feedback">Please enter your review.</div>
-                    </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success btn-lg px-4">Submit Review</button>
-                    </div>
-                </form>
-                <% } %>
+            <!-- Reviews Section -->
+            <div class="modern-listing-section">
+                <h2 class="modern-listing-section-title">Reviews</h2>
                 
-                <!-- Show review -->
-                 <% if(listing.reviews.length >0) { %>
-
-                 <hr>
-                <div class="showReview container">
-                    <h4 class="text-center my-3">All Reviews</h4>
-                    <div class="row">
-                        <% for (review of listing.reviews) { %>
-                            <div class="col-md-4">
-                                <div class="review-card p-3">
-                                    <p class="card-title">@<%= review.author.username %></p>
-                                    <hr>
-                                    <p class="review-rating">
-                                        <% for (let i = 0; i < review.rating; i++) { %>
-                                            ⭐
-                                        <% } %>
-                                        <!-- (<%= review.rating %>/5) -->
-                                    </p>
-                                    <p class="review-comment"><%= review.comment %></p>
-                                   
-                                    <% if(currUser && currUser._id.equals(review.author._id)) { %>
-                                    <form class ="mb-3" method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=Delete">
-                                        <button class="btn btn-sm btn-dark">Delete</button>
-                                    </form>
-                                    <% } %>
-                                </div>
+                <!-- Review Form -->
+                <% if(currUser) {%>
+                <div class="modern-listing-review-form">
+                    <h3>Leave a Review</h3>
+                    <form action="/listings/<%= listing._id %>/reviews" method="POST" class="needs-validation" novalidate>
+                        
+                        <!-- ratings -->
+                        <div class="modern-listing-rating-container">
+                            <label class="form-label fw-bold">Rating:</label>
+                            <div class="rating">
+                                <input type="radio" name="review[rating]" value="5" id="star5">
+                                <label for="star5">&#9733;</label>
+                                <input type="radio" name="review[rating]" value="4" id="star4">
+                                <label for="star4">&#9733;</label>
+                                <input type="radio" name="review[rating]" value="3" id="star3">
+                                <label for="star3">&#9733;</label>
+                                <input type="radio" name="review[rating]" value="2" id="star2">
+                                <label for="star2">&#9733;</label>
+                                <input type="radio" name="review[rating]" value="1" id="star1" required>
+                                <label for="star1">&#9733;</label>
                             </div>
-                        <% } %>
-                    </div>
+                            <div class="invalid-feedback">Please select a rating.</div>
+                        </div>
+
+                        <!-- comments -->
+                        <div class="modern-listing-form-group">
+                            <label for="reviewText" class="form-label fw-bold">Your Review:</label>
+                            <textarea name="review[comment]" id="reviewText" class="modern-listing-textarea" rows="4" required placeholder="Write your review here..."></textarea>
+                            <div class="invalid-feedback">Please enter your review.</div>
+                        </div>
+
+                        <div class="modern-listing-form-submit">
+                            <button type="submit" class="modern-listing-submit-btn">Submit Review</button>
+                        </div>
+                    </form>
                 </div>
                 <% } %>
                 
-
+                <!-- Review List -->
+                <% if(listing.reviews.length > 0) { %>
+                <div class="modern-listing-reviews-container">
+                    <% for (review of listing.reviews) { %>
+                        <div class="modern-listing-review-card">
+                            <div class="modern-listing-review-header">
+                                <div class="modern-listing-reviewer">
+                                    <i class="bi bi-person-circle"></i>
+                                    <span>@<%= review.author.username %></span>
+                                </div>
+                                <div class="modern-listing-review-rating">
+                                    <% for (let i = 0; i < review.rating; i++) { %>
+                                        <i class="bi bi-star-fill"></i>
+                                    <% } %>
+                                    <% for (let i = review.rating; i < 5; i++) { %>
+                                        <i class="bi bi-star"></i>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="modern-listing-review-content">
+                                <p><%= review.comment %></p>
+                            </div>
+                            <% if(currUser && currUser._id.equals(review.author._id)) { %>
+                            <div class="modern-listing-review-actions">
+                                <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=Delete">
+                                    <button class="modern-listing-delete-review-btn">Delete</button>
+                                </form>
+                            </div>
+                            <% } %>
+                        </div>
+                    <% } %>
+                </div>
+                <% } else { %>
+                <div class="modern-listing-no-reviews">
+                    <p>No reviews yet. Be the first to leave a review!</p>
+                </div>
+                <% } %>
             </div>
+        </div>
 
+        <!-- Right Column: Booking Card -->
+        <div class="modern-listing-sidebar">
+            <div class="modern-listing-booking-card">
+                <div class="modern-listing-price">
+                    <span class="modern-listing-amount">₹<%= listing.price.toLocaleString("en-IN") %></span>
+                    <span class="modern-listing-per-night">per night</span>
+                </div>
+                
+                <div class="modern-listing-booking-form">
+                    <div class="modern-listing-dates">
+                        <div class="modern-listing-check-in">
+                            <label>Check-in</label>
+                            <input type="date" class="modern-listing-date-input">
+                        </div>
+                        <div class="modern-listing-check-out">
+                            <label>Check-out</label>
+                            <input type="date" class="modern-listing-date-input">
+                        </div>
+                    </div>
+                    
+                    <div class="modern-listing-guests">
+                        <label>Guests</label>
+                        <select class="modern-listing-select">
+                            <option value="1">1 guest</option>
+                            <option value="2">2 guests</option>
+                            <option value="3">3 guests</option>
+                            <option value="4">4 guests</option>
+                            <option value="5">5 guests</option>
+                        </select>
+                    </div>
+                    
+                    <button class="modern-listing-reserve-btn">Reserve</button>
+                    
+                    <div class="modern-listing-total">
+                        <div class="modern-listing-fee-item">
+                            <span>₹<%= listing.price.toLocaleString("en-IN") %> × 5 nights</span>
+                            <span>₹<%= (listing.price * 5).toLocaleString("en-IN") %></span>
+                        </div>
+                        <div class="modern-listing-fee-item">
+                            <span>Cleaning fee</span>
+                            <span>₹<%= Math.round(listing.price * 0.1).toLocaleString("en-IN") %></span>
+                        </div>
+                        <div class="modern-listing-fee-item">
+                            <span>Service fee</span>
+                            <span>₹<%= Math.round(listing.price * 0.15).toLocaleString("en-IN") %></span>
+                        </div>
+                        <div class="modern-listing-fee-total">
+                            <span>Total</span>
+                            <span>₹<%= (listing.price * 5 + Math.round(listing.price * 0.1) + Math.round(listing.price * 0.15)).toLocaleString("en-IN") %></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

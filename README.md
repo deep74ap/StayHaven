@@ -1,4 +1,4 @@
-<img width="959" height="444" alt="StayhavenLandingPage" src="https://github.com/user-attachments/assets/c5e813f0-f438-40a5-bbf5-ffd0b648c0e3" /># 🏡 StayHaven
+## 🏡 StayHaven
 
 StayHaven is a modern **Hotel booking accomodation platform** for booking vacation rentals, short-term stays, and unique accommodations worldwide. Built with the **MERN stack** technologies, this full-stack project enables users to explore, list, and book properties seamlessly with a user-friendly interface.
 
